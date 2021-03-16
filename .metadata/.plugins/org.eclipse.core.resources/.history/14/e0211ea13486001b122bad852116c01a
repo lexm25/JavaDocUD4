@@ -1,0 +1,102 @@
+package unidad4;
+	/**
+	* @author Alejandro Martin Alvarez
+	*
+	*/
+public class CCuenta {
+
+	//Propiedades de la Clase Cuenta
+	protected String nombre;
+	private String cuenta;
+	private double saldo;
+	private double tipoInteres;
+
+	/**
+	 * Constructor por defecto
+	 */
+	public CCuenta() {
+	}
+
+	/**
+	 * Constructor sobrecargado
+	 */
+	public CCuenta(String nom, String cue, double sal, double tipo) {
+		nombre = nom;
+		cuenta = cue;
+		saldo = sal;
+		tipoInteres = tipo;
+	}
+	
+	/**
+	 * @param metodo que define el nombre de la cuenta
+	 */
+	public void asignarNombre(String nom) {
+		nombre = nom;
+	}
+
+	/**
+	 * @return metodo que devuelve el nombre de la cuenta
+	 */
+	public String obtenerNombre() {
+		return nombre;
+	}
+
+	/**
+	 * 
+	 * @return metodo que devuelve el saldo de la cuenta
+	 */
+	public double estado() {
+		return saldo;
+	}
+
+	/**
+	 * @param metodo que recibe una cantidad y modifica el saldo, teniendo
+	 * en cuenta que la cantidad no sea menor que 0
+	 * @throws Lanzara una excepcion si la cantidad es menor que 0
+	 */
+	public void ingresar(double cantidad) throws Exception {
+		if (cantidad < 0) {
+			throw new Exception("No se puede ingresar una cantidad negativa");
+		}
+		setSaldo(saldo + cantidad);
+	}
+
+	/**
+	 * @param metodo que recibe una cantidad y modifica el saldo de la cuenta,
+	 * teniendo en cuenta que la cantidad no sea menor que 0.
+	 * @throws Lanzara un error si la cantidad es menor que 0
+	 */
+	public void retirar(double cantidad) throws Exception {
+		if (cantidad < 0) {
+			throw new Exception("No se puede retirar una cantidad negativa");
+		}
+		if (estado() < cantidad) {
+			throw new Exception("No se hay suficiente saldo");
+		}
+		setSaldo(saldo - cantidad);
+	}
+
+	/*
+	 * Getters&Setters de la clase que implementa las propiedades
+	 * de la cuenta definidas al principio.
+	 */
+	public String obtenerCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(String cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public double getTipoInteres() {
+		return tipoInteres;
+	}
+
+	public void setTipoInteres(double tipoInteres) {
+		this.tipoInteres = tipoInteres;
+	}
+}

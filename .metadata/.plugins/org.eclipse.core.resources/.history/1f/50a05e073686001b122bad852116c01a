@@ -1,0 +1,123 @@
+package unidad4;
+	/**
+	* @author Alejandro Martin Alvarez
+	*
+	*/
+/**
+ * @author alumno
+ *
+ */
+public class CCuenta {
+
+	//Propiedades de la Clase Cuenta
+	protected String nombre;
+	private String cuenta;
+	private double saldo;
+	private double tipoInteres;
+
+	/**
+	 * Constructor por defecto
+	 */
+	public CCuenta() {
+	}
+
+	/**
+	 * @param nom nombre de la cuenta
+	 * @param cue cuenta
+	 * @param sal saldo de la cuenta
+	 * @param tipo de la cuenta
+	 */
+	public CCuenta(String nom, String cue, double sal, double tipo) {
+		nombre = nom;
+		cuenta = cue;
+		saldo = sal;
+		tipoInteres = tipo;
+	}
+	
+	
+	/**
+	 * @param nom define el nombre de la cuenta
+	 */
+	public void asignarNombre(String nom) {
+		nombre = nom;
+	}
+
+	
+	/**
+	 * @return nombre de la cuenta
+	 */
+	public String obtenerNombre() {
+		return nombre;
+	}
+
+	
+	/**
+	 * @return saldo de la cuenta
+	 */
+	public double estado() {
+		return saldo;
+	}
+
+	/**
+	 * @param cantidad modifica el saldo, teniendo en cuenta que la cantidad 
+	 * no sea menor que 0.
+	 * @throws Exception si la cantidad es menor que 0
+	 */
+	public void ingresar(double cantidad) throws Exception {
+		if (cantidad < 0) {
+			throw new Exception("No se puede ingresar una cantidad negativa");
+		}
+		setSaldo(saldo + cantidad);
+	}
+
+	/**
+	 * @param cantidad metodo que recibe una cantidad y modifica el saldo de la cuenta,
+	 * teniendo en cuenta que la cantidad no sea menor que 0.
+	 * @throws Exception lanzara un error si la cantidad es menor que 0
+	 */
+	public void retirar(double cantidad) throws Exception {
+		if (cantidad < 0) {
+			throw new Exception("No se puede retirar una cantidad negativa");
+		}
+		if (estado() < cantidad) {
+			throw new Exception("No se hay suficiente saldo");
+		}
+		setSaldo(saldo - cantidad);
+	}
+
+	//Getters & Setters de la clase
+	/**
+	 * @return cuenta
+	 */
+	public String obtenerCuenta() {
+		return cuenta;
+	}
+
+	/**
+	 * @param cuenta sobreescribe la cuenta
+	 */
+	public void setCuenta(String cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	/**
+	 * @param saldo sobreescribe el saldo
+	 */
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	/**
+	 * @return tipoInteres
+	 */
+	public double getTipoInteres() {
+		return tipoInteres;
+	}
+
+	/**
+	 * @param tipoInteres
+	 */
+	public void setTipoInteres(double tipoInteres) {
+		this.tipoInteres = tipoInteres;
+	}
+}
